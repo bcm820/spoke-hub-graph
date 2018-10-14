@@ -1,1 +1,1 @@
-src/main/scala-js/* linguist-vendored
+src/main/scala-js/*.js linguist-language=Scala
