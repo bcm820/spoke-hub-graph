@@ -22,9 +22,6 @@ const InfoPane = ({
 }) => (
   <div className={'info'}>
     <h2>
-      {city} {isLoopable && '∞'}
-    </h2>
-    <h4>
       <span
         style={{
           color: toRGB(netId),
@@ -33,8 +30,9 @@ const InfoPane = ({
       >
         ❉
       </span>
-      {` netID-${netId}`}
-    </h4>
+      {` ${city}`} {isLoopable && '∞'}
+    </h2>
+    <h4 />
     {size} cities, {edges} routes
     <RoutesList desc={'Direct routes to:'} routes={routesTo} />
     {selected &&
