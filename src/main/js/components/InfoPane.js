@@ -32,7 +32,6 @@ const InfoPane = ({
       </span>
       {` ${city}`} {isLoopable && '∞'}
     </h2>
-    <h4 />
     {size} cities, {edges} routes
     <RoutesList desc={'Direct routes to:'} routes={routesTo} />
     {selected &&
