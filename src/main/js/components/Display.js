@@ -1,8 +1,7 @@
-import { toJS, show } from '../../scala-js/transit-fastopt';
-import { toRGB } from '../helpers';
-
 import React from 'react';
 import { withContext } from '../Context';
+import { toJS } from '../../scala-js/transit-fastopt';
+import { toRGB } from '../helpers';
 
 import {
   VictoryGroup,
@@ -55,9 +54,7 @@ class Display extends React.Component {
       netId: net.id,
       info: {
         city,
-        routesTo: toJS(show(net.routes(city))),
-        eachJump: toJS(net.eachJump(city)).map(s => toJS(show(s))),
-        isLoopable: net.isLoopable(city),
+        net,
         size: net.size,
         edges: net.edges
       }

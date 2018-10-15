@@ -1,6 +1,5 @@
-import { TransitSystem, toJS } from '../scala-js/transit-fastopt';
-
 import React from 'react';
+import { TransitSystem, toJS } from '../scala-js/transit-fastopt';
 import { CtxProvider } from './Context';
 import Display from './components/Display';
 import Input from './components/Input';

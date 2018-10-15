@@ -1,5 +1,6 @@
 import React from 'react';
 import { withContext } from '../Context';
+import { toJS, show } from '../../scala-js/transit-fastopt';
 import { toRGB } from '../helpers';
 
 const RoutesList = ({ desc, routes }) => (
@@ -15,7 +16,7 @@ const RoutesList = ({ desc, routes }) => (
 
 const InfoPane = ({
   ctx: {
-    info: { city, isLoopable, routesTo, size, edges, eachJump },
+    info: { city, net, size, edges },
     selected,
     netId
   }
@@ -30,12 +31,17 @@ const InfoPane = ({
       >
         ❉
       </span>
-      {` ${city}`} {isLoopable && '∞'}
+      {` ${city}`} {net.isLoopable(city) && '∞'}
     </h2>
     {size} cities, {edges} routes
-    <RoutesList desc={'Direct routes to:'} routes={routesTo} />
+    <RoutesList
+      desc={'Direct routes to:'}
+      routes={toJS(show(net.routes(city)))}
+    />
     {selected &&
-      eachJump
+      size > 2 &&
+      toJS(net.eachJump(city))
+        .map(s => toJS(show(s)))
         .slice(1)
         .map((j, i) => (
           <RoutesList key={j[0]} desc={`In ${i + 2} trips:`} routes={j} />
