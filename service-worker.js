@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.2/workbox-sw.js");
 
 importScripts(
-  "/spoke-hub-graph/precache-manifest.9b1e46866d72fd88521a7a1068bbe31e.js"
+  "/spoke-hub-graph/precache-manifest.cb09583984018cee04f205c97598fc6c.js"
 );
 
 workbox.clientsClaim();
