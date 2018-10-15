@@ -110,6 +110,20 @@ case class Network(@JSExport id: String, graph: Map[String, City]) {
   }
 
   /**
+    * Returns a list of Set[City] representing cities reached at each jump,
+    * from first jump until all reachable cities are found.
+    */
+  @JSExport
+  def eachJump(city: String): List[Set[City]] = {
+    def jump(jumps: Int, reached: List[Set[City]]): List[Set[City]] = {
+      val next = fromJumps(city, jumps)
+      if (next.isEmpty) reached.reverse
+      else jump(jumps + 1, next :: reached)
+    }
+    jump(2, List(fromJumps(city, 1)))
+  }
+
+  /**
     * Returns a set of all cities reachable within a given range (`jumps`).
     */
   @JSExport
@@ -127,19 +141,5 @@ case class Network(@JSExport id: String, graph: Map[String, City]) {
     */
   @JSExport
   def isLoopable(city: String): Boolean = fromJumps(city, size, true)(graph(city))
-
-  /**
-    * Returns a list of Set[City] representing cities reached at each jump,
-    * from first jump until all reachable cities are found.
-    */
-  @JSExport
-  def eachJump(city: String): List[Set[City]] = {
-    def jump(jumps: Int, reached: List[Set[City]]): List[Set[City]] = {
-      val next = fromJumps(city, jumps)
-      if (next.isEmpty) reached.reverse
-      else jump(jumps + 1, next :: reached)
-    }
-    jump(2, List(fromJumps(city, 1)))
-  }
 
 }

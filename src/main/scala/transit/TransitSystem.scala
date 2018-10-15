@@ -80,9 +80,10 @@ object TransitSystem {
     add("Sterling", "Herndon")
     add("Herndon", "Chantilly")
     add("Chantilly", "South Riding")
-    add("South Riding", "Leesburg")
+    add("Aldie", "South Riding")
+    add("Aldie", "Leesburg")
     val n = networks.find(_.graph.contains("Leesburg")).get
-    println(n.eachJump("Leesburg").map(show))
+    println(n.fromJumps("Leesburg", 3))
   }
 
 }
