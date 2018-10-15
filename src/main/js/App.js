@@ -89,7 +89,7 @@ class App extends React.Component {
       <CtxProvider value={this.state}>
         <Input add={this.add} />
         <button className={'generate'} onClick={this.generate}>
-          Generate
+          Generate Random
         </button>
         <Display />
         {info && <InfoPane />}

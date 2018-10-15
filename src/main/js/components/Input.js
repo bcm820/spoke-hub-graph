@@ -5,25 +5,30 @@ class Input extends React.Component {
 
   handleChange = e => this.setState({ text: e.target.value });
 
-  handleKeyPress = e => {
-    if (e.key === 'Enter') {
-      const { text } = this.state;
-      if (!/\S{1,}\s{0,}-\s{0,}\S{1,}/.test(text)) return;
-      this.props.add(text);
-      this.setState({ text: '' });
-    }
+  handleKeyPress = e => e.key === 'Enter' && this.handleSubmit();
+
+  handleSubmit = () => {
+    const { text } = this.state;
+    if (!/\S{1,}\s{0,}-\s{0,}\S{1,}/.test(text)) return;
+    this.props.add(text);
+    this.setState({ text: '' });
   };
 
   render() {
     return (
-      <input
-        type={'text'}
-        autoFocus={true}
-        placeholder={`Add a route (e.g. "Earth - Mars")`}
-        value={this.state.text}
-        onChange={this.handleChange}
-        onKeyPress={this.handleKeyPress}
-      />
+      <div>
+        <input
+          type={'text'}
+          autoFocus={true}
+          placeholder={`Add a route (e.g. "Earth - Mars")`}
+          value={this.state.text}
+          onChange={this.handleChange}
+          onKeyPress={this.handleKeyPress}
+        />
+        <button onClick={this.handleSubmit} className={'add'}>
+          Add Route
+        </button>
+      </div>
     );
   }
 }
