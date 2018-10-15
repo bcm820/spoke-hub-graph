@@ -1,1 +1,2 @@
-src/main/scala-js/*.js linguist-language=Scala
+src/main/scala-js/*.js linguist-vendored
+transit-fastopt.js linguist-vendored
