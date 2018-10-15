@@ -1,13 +1,13 @@
 {
   "main.css": "/spoke-hub-graph/static/css/main.7f73ee3e.chunk.css",
-  "main.js": "/spoke-hub-graph/static/js/main.04d69231.chunk.js",
-  "main.js.map": "/spoke-hub-graph/static/js/main.04d69231.chunk.js.map",
+  "main.js": "/spoke-hub-graph/static/js/main.2110ad23.chunk.js",
+  "main.js.map": "/spoke-hub-graph/static/js/main.2110ad23.chunk.js.map",
   "static/js/1.ff9b1f6f.chunk.js": "/spoke-hub-graph/static/js/1.ff9b1f6f.chunk.js",
   "static/js/1.ff9b1f6f.chunk.js.map": "/spoke-hub-graph/static/js/1.ff9b1f6f.chunk.js.map",
   "runtime~main.js": "/spoke-hub-graph/static/js/runtime~main.2756c897.js",
   "runtime~main.js.map": "/spoke-hub-graph/static/js/runtime~main.2756c897.js.map",
   "static/css/main.7f73ee3e.chunk.css.map": "/spoke-hub-graph/static/css/main.7f73ee3e.chunk.css.map",
   "index.html": "/spoke-hub-graph/index.html",
-  "precache-manifest.153dc1e4ed26e8f9c975bcf095aab3e8.js": "/spoke-hub-graph/precache-manifest.153dc1e4ed26e8f9c975bcf095aab3e8.js",
+  "precache-manifest.9b1e46866d72fd88521a7a1068bbe31e.js": "/spoke-hub-graph/precache-manifest.9b1e46866d72fd88521a7a1068bbe31e.js",
   "service-worker.js": "/spoke-hub-graph/service-worker.js"
 }
