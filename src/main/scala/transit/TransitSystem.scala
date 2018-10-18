@@ -77,13 +77,10 @@ object TransitSystem {
     import Conversions._
     add("Leesburg", "Ashburn")
     add("Ashburn", "Sterling")
-    add("Sterling", "Herndon")
-    add("Herndon", "Chantilly")
-    add("Chantilly", "South Riding")
-    add("Aldie", "South Riding")
+    add("Sterling", "Aldie")
     add("Aldie", "Leesburg")
     val n = networks.find(_.graph.contains("Leesburg")).get
-    println(n.fromJumps("Leesburg", 3))
+    println(n.fromJumps("Leesburg", 7, false))
   }
 
 }

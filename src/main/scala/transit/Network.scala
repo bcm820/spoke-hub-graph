@@ -87,26 +87,17 @@ case class Network(@JSExport id: String, graph: Map[String, City]) {
     * The given number of jumps can exceed the outer limit of the network, returning an empty set.
     */
   @JSExport
-  def fromJumps(city: String, jumps: Int, range: Boolean = false): Set[City] = {
-    def jump(c1: City, inc: Int, visited: Set[City]): Set[City] = c1 match {
-      case Spoke(n, _) if (n != city && inc == jumps && !visited(c1) && range) => visited + c1
-      case Spoke(n, _) if (n != city && inc == jumps && !visited(c1)) => Set(c1)
-      case Spoke(n, _) if (n != city) => Set()
-      case Hub(n, rs) if (inc > 2 && rs(city) && inc == jumps && range) => visited + graph(city)
-      case Hub(n, rs) if (inc > 2 && rs(city) && inc == jumps) => Set(graph(city))
-      case Hub(n, rs) if (inc > 2 && rs(city)) => Set()
-      case _ => {
-        val cs = routes(c1).diff(visited + graph(city))
-        cs.toList match {
-          case Nil if (range) => visited + c1
-          case Nil => Set(c1)
-          case _ if (inc == jumps && range) => visited | cs
-          case _ if (inc == jumps) => cs
-          case _ => cs.flatMap(c2 => jump(c2, inc + 1, visited | Set(c2)))
-        }
-      }
+  def fromJumps(origin: String, maxJumps: Int, allJumps: Boolean = false): Set[City] = {
+    def jump(currCity: City, currJump: Int, cityAcc: Set[City]): Set[City] = {
+      val nextCities =
+        if (currJump == 2) routes(currCity).diff(cityAcc + graph(origin))
+        else routes(currCity).diff(cityAcc)
+      if (currJump == maxJumps || nextCities.isEmpty)
+        if (allJumps) cityAcc | nextCities else nextCities
+      else nextCities.flatMap(c => jump(c, currJump + 1, cityAcc + c))
     }
-    jump(graph(city), 1, Set())
+    if (maxJumps < 1) Set()
+    else jump(graph(origin), 1, Set())
   }
 
   /**
